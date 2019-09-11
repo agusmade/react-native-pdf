@@ -222,7 +222,7 @@ export default class PdfView extends Component {
     );
 
     _onItemSingleTap = (index, gs) => {
-
+        console.log('_onItemSingleTap ==>', index, gs);
         this.props.onPageSingleTap(index + 1, gs);
 
     };
