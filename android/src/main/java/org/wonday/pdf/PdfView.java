@@ -159,7 +159,13 @@ public class PdfView extends PDFView implements OnPageChangeListener,OnLoadCompl
         //Constants.Pinch.MAXIMUM_ZOOM = this.maxScale;
 
         WritableMap event = Arguments.createMap();
-        event.putString("message", "pageSingleTap|"+page);
+        // event.putString("message", "pageSingleTap|"+page);
+        event.putString("message", "pageSingleTap|"+page+"|" +
+            "{\"x\":"+e.getX()+"," +
+            "\"xOffset\":"+getCurrentXOffset()+"," +
+            "\"y\":"+e.getY()+"," +
+            "\"yOffset\":"+getCurrentYOffset()+"," +
+            "\"zoom\":"+getZoom()+"}");
 
         ReactContext reactContext = (ReactContext)this.getContext();
         reactContext.getJSModule(RCTEventEmitter.class).receiveEvent(

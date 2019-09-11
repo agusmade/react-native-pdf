@@ -349,7 +349,8 @@ export default class Pdf extends Component {
             } else if (message[0] === 'error') {
                 this._onError(new Error(message[1]));
             } else if (message[0] === 'pageSingleTap') {
-                this.props.onPageSingleTap && this.props.onPageSingleTap(message[1]);
+                // this.props.onPageSingleTap && this.props.onPageSingleTap(message[1]);
+                this.props.onPageSingleTap && this.props.onPageSingleTap(message[1], JSON.parse(message[2]));
             } else if (message[0] === 'scaleChanged') {
                 this.props.onScaleChanged && this.props.onScaleChanged(message[1]);
             }
@@ -428,6 +429,7 @@ export default class Pdf extends Component {
 
 
 if (Platform.OS === "android") {
+    console.log('masuk sini bosssss===>');
     var PdfCustom = requireNativeComponent('RCTPdf', Pdf, {
         nativeOnly: {path: true, onChange: true},
     })
