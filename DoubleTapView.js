@@ -83,8 +83,8 @@ export default class DoubleTapView extends Component {
 
                 clearTimeout(this.timer);
                 this.timer = null;
-                this.props.onDoubleTap();
-
+                // this.props.onDoubleTap();
+                this.props.onDoubleTap(gestureState);
             } else {
 
                 const {prevTouchX, prevTouchY, prevTouchTimeStamp} = this.prevTouchInfo;
@@ -93,7 +93,8 @@ export default class DoubleTapView extends Component {
                 // if not in radius, it's a move
                 if (this.distance(prevTouchX, prevTouchY, gestureState.x0, gestureState.y0) < radius) {
                     this.timer = null;
-                    this.props.onSingleTap();
+                    // this.props.onSingleTap();
+                    this.props.onSingleTap(gestureState);
                 }
 
             }
@@ -102,7 +103,8 @@ export default class DoubleTapView extends Component {
             if (this.distance(0, gestureState.dx, 0, gestureState.dy) < 10) {
 
                 this.timer = setTimeout(() => {
-                    this.props.onSingleTap();
+                    // this.props.onSingleTap();
+                    this.props.onSingleTap(gestureState);
                     this.timer = null;
                 }, this.props.delay);
             }

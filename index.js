@@ -91,7 +91,7 @@ export default class Pdf extends Component {
         },
         onError: (error) => {
         },
-        onPageSingleTap: (page) => {
+        onPageSingleTap: (page, gs) => {
         },
         onScaleChanged: (scale) => {
         },
